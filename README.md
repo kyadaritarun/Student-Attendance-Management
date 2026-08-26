@@ -22,7 +22,7 @@ A full-stack, mobile-first **Student Attendance Management Web Application** eng
 | **Frontend** | React (JSX), Vite, React Router v6, Axios, Lucide Icons, CSS3 / Custom Glassmorphism System |
 | **Backend** | Python 3.10+, Flask, Flask-RESTful APIs, Flask-CORS, PyJWT, Werkzeug |
 | **Database & ORM** | PostgreSQL 15, SQLAlchemy ORM |
-| **DevOps & Tools** | Docker, Docker Compose, Pytest, Dotenv |
+| **DevOps & Tools** | Pytest, Dotenv |
 
 ---
 
@@ -73,7 +73,6 @@ student-attendance-app/
 ├── database/
 │   └── schema.sql               # PostgreSQL DDL table definitions
 │
-├── docker-compose.yml
 ├── README.md
 └── .gitignore
 ```
@@ -85,7 +84,6 @@ student-attendance-app/
 ### 1. Prerequisites
 Ensure you have the following installed:
 * **Python** (v3.10 or higher)
-* **Node.js** (v18 or higher) & `npm`
 * **PostgreSQL** (v14 or higher)
 
 ---
@@ -177,18 +175,6 @@ Run automated Pytest backend tests covering login authentication, token verifica
 cd backend
 pytest -v
 ```
-
----
-
-## 🐳 Docker Deployment Setup
-
-To launch the complete application stack (PostgreSQL + Flask + React) with Docker Compose:
-
-```bash
-docker-compose up --build
-```
-* Access Frontend: `http://localhost`
-* Access Backend API: `http://localhost:5000`
 
 ---
 
