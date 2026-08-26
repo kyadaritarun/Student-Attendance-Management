@@ -42,9 +42,9 @@ export const LoginPage = () => {
 
   return (
     <div style={styles.page}>
-      <div style={styles.card}>
+      <div style={styles.card} className="login-card">
         {/* Left Side: Illustration & Branding */}
-        <div style={styles.leftCol}>
+        <div style={styles.leftCol} className="login-left-col">
           <img
             src={isPasswordFocused ? "/student_logo_eyes_closed.png" : "/student_logo.png"}
             alt="Attendance Management System"
@@ -60,7 +60,7 @@ export const LoginPage = () => {
         </div>
 
         {/* Vertical Divider */}
-        <div style={styles.divider} />
+        <div style={styles.divider} className="login-divider" />
 
         {/* Right Side: Login Form */}
         <div style={styles.rightCol}>

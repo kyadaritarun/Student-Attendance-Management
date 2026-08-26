@@ -243,6 +243,17 @@ body {
 }
 
 /* Responsive helpers */
+@media (max-width: 640px) {
+  .login-left-col,
+  .login-divider {
+    display: none !important;
+  }
+  .login-card {
+    max-width: 420px !important;
+    padding: 28px 20px !important;
+  }
+}
+
 @media (max-width: 480px) {
   .hide-mobile {
     display: none !important;
