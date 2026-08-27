@@ -24,4 +24,5 @@ env/
 .idea/
 *.log
 
-
+# Notes
+Notes/
