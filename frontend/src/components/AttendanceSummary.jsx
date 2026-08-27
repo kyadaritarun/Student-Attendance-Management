@@ -6,69 +6,28 @@ export const AttendanceSummary = ({ batch, summary }) => {
   if (!batch || !summary) return null;
 
   return (
-    <div className="card" style={styles.card}>
+    <div className="bg-white border border-gray-200 rounded-xl p-5 mb-6 shadow-xs">
       {/* Batch header */}
-      <div style={styles.batchHeader}>
-        <h2 style={styles.batchName}>{batch.name}</h2>
-        <span style={styles.code}>{batch.batch_code}</span>
+      <div className="flex items-center justify-between mb-5 pb-3.5 border-b border-gray-100 flex-wrap gap-2">
+        <h2 className="text-lg font-bold text-gray-900 m-0">
+          {batch.name}
+        </h2>
+        <span className="text-xs font-semibold text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded">
+          {batch.batch_code}
+        </span>
       </div>
 
       {/* Progress + Stats */}
-      <div style={styles.body}>
-        <div style={styles.progressCol}>
+      <div className="flex flex-col sm:flex-row gap-6 items-center">
+        <div className="shrink-0 py-2">
           <AttendanceProgress percentage={summary.attendance_percentage} />
         </div>
-        <div style={styles.statsCol}>
+        <div className="flex-1 w-full min-w-[200px]">
           <AttendanceStats summary={summary} />
         </div>
       </div>
     </div>
   );
-};
-
-const styles = {
-  card: {
-    padding: '20px',
-    marginBottom: '24px',
-  },
-  batchHeader: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginBottom: '20px',
-    paddingBottom: '14px',
-    borderBottom: '1px solid #f0f2f5',
-    flexWrap: 'wrap',
-    gap: '8px',
-  },
-  batchName: {
-    fontSize: '1.15rem',
-    fontWeight: '700',
-    color: '#1a1a2e',
-    margin: 0,
-  },
-  code: {
-    fontSize: '0.75rem',
-    fontWeight: '600',
-    color: '#4361ee',
-    background: '#eef0ff',
-    padding: '3px 10px',
-    borderRadius: '4px',
-  },
-  body: {
-    display: 'flex',
-    gap: '24px',
-    alignItems: 'center',
-    flexWrap: 'wrap',
-  },
-  progressCol: {
-    flex: '0 0 auto',
-    padding: '8px 0',
-  },
-  statsCol: {
-    flex: 1,
-    minWidth: '200px',
-  },
 };
 
 export default AttendanceSummary;

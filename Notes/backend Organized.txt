@@ -1,0 +1,14 @@
+backend/
+├── run.py                     # Entrypoint (starts the server)
+├── seed.py                    # Populates PostgreSQL DB with 150 students & 6,200 records
+├── app/
+│   ├── __init__.py            # App Factory (configures Flask, CORS, & DB)
+│   ├── config.py              # Reads .env credentials (DATABASE_URL, SECRET_KEY)
+│   ├── models/                # Database Tables (SQLAlchemy ORM)
+│   │   └── __init__.py        # User, Batch, AttendanceSession, AttendanceParticipant
+│   ├── routes/                # REST API Endpoints
+│   │   ├── auth.py            # POST /api/student/login (Generates JWT tokens)
+│   │   └── attendance.py      # GET /api/student/batches & attendance metrics
+│   └── utils/                 # Helpers & Decorators
+│       ├── auth_decorator.py  # @token_required security decorator
+│       └── calculations.py    # Attendance % and Present Streak math engine

@@ -84,9 +84,9 @@ export const DashboardPage = () => {
   };
 
   return (
-    <div style={styles.page}>
+    <div className="min-h-screen bg-[#f5f6fa]">
       <Navbar />
-      <main style={styles.main}>
+      <main className="max-w-4xl mx-auto px-4 py-5 pb-10">
         <StudentProfile student={user} />
 
         {loadingBatches ? (
@@ -124,18 +124,6 @@ export const DashboardPage = () => {
       </main>
     </div>
   );
-};
-
-const styles = {
-  page: {
-    minHeight: '100vh',
-    background: '#f5f6fa',
-  },
-  main: {
-    maxWidth: '960px',
-    margin: '0 auto',
-    padding: '20px 16px 40px',
-  },
 };
 
 export default DashboardPage;

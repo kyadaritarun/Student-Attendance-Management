@@ -4,81 +4,35 @@ export const BatchCard = ({ batch, isSelected, onClick }) => {
   return (
     <div
       onClick={onClick}
-      style={{
-        ...styles.card,
-        ...(isSelected ? styles.selected : {}),
-      }}
-      className="card"
+      className={`bg-white border p-4 rounded-xl cursor-pointer transition-all duration-150 shadow-xs hover:shadow-md ${
+        isSelected
+          ? 'border-indigo-600 ring-2 ring-indigo-600/15'
+          : 'border-gray-200 hover:border-gray-300'
+      }`}
     >
-      <div style={styles.top}>
-        <span style={styles.code}>{batch.batch_code}</span>
+      <div className="mb-2">
+        <span className="text-[11.5px] font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded">
+          {batch.batch_code}
+        </span>
       </div>
-      <h3 style={styles.name}>{batch.batch_name}</h3>
-      <p style={styles.course}>{batch.course_name}</p>
-      <div style={styles.footer}>
-        <span style={{
-          ...styles.action,
-          color: isSelected ? '#4361ee' : '#8e8ea0',
-        }}>
+      <h3 className="text-sm font-bold text-gray-900 mb-1 leading-snug">
+        {batch.batch_name}
+      </h3>
+      <p className="text-xs text-gray-500 m-0">
+        {batch.course_name}
+      </p>
+      <div className="flex items-center justify-between mt-3.5 pt-2.5 border-t border-gray-100">
+        <span
+          className={`text-xs font-semibold ${
+            isSelected ? 'text-indigo-600' : 'text-gray-400'
+          }`}
+        >
           {isSelected ? 'Selected' : 'View Attendance'}
         </span>
-        <span style={styles.arrow}>&rsaquo;</span>
+        <span className="text-base text-gray-400 leading-none">&rsaquo;</span>
       </div>
     </div>
   );
-};
-
-const styles = {
-  card: {
-    padding: '16px',
-    cursor: 'pointer',
-    transition: 'border-color 0.15s ease, box-shadow 0.15s ease',
-    minWidth: 0,
-  },
-  selected: {
-    borderColor: '#4361ee',
-    boxShadow: '0 0 0 2px rgba(67, 97, 238, 0.15)',
-  },
-  top: {
-    marginBottom: '8px',
-  },
-  code: {
-    fontSize: '0.72rem',
-    fontWeight: '700',
-    color: '#4361ee',
-    background: '#eef0ff',
-    padding: '2px 8px',
-    borderRadius: '4px',
-  },
-  name: {
-    fontSize: '0.95rem',
-    fontWeight: '700',
-    color: '#1a1a2e',
-    margin: '0 0 4px 0',
-    lineHeight: 1.3,
-  },
-  course: {
-    fontSize: '0.8rem',
-    color: '#8e8ea0',
-    margin: 0,
-  },
-  footer: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginTop: '14px',
-    paddingTop: '10px',
-    borderTop: '1px solid #f0f2f5',
-  },
-  action: {
-    fontSize: '0.8rem',
-    fontWeight: '600',
-  },
-  arrow: {
-    fontSize: '1.2rem',
-    color: '#8e8ea0',
-    lineHeight: 1,
-  },
 };
 
 export default BatchCard;

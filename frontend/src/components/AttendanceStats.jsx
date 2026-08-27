@@ -4,51 +4,26 @@ export const AttendanceStats = ({ summary }) => {
   if (!summary) return null;
 
   const stats = [
-    { label: 'Total Sessions', value: summary.total_sessions, color: '#4361ee', bg: '#eef0ff' },
-    { label: 'Present', value: summary.present_sessions, color: '#22c55e', bg: '#f0fdf4' },
-    { label: 'Absent', value: summary.absent_sessions, color: '#ef4444', bg: '#fef2f2' },
-    { label: 'Present Streak', value: `${summary.present_streak}`, color: '#f59e0b', bg: '#fffbeb' },
+    { label: 'Total Sessions', value: summary.total_sessions, color: 'text-indigo-600', bg: 'bg-indigo-50' },
+    { label: 'Present', value: summary.present_sessions, color: 'text-green-600', bg: 'bg-green-50' },
+    { label: 'Absent', value: summary.absent_sessions, color: 'text-red-600', bg: 'bg-red-50' },
+    { label: 'Present Streak', value: `${summary.present_streak}`, color: 'text-amber-500', bg: 'bg-amber-50' },
   ];
 
   return (
-    <div style={styles.grid}>
+    <div className="grid grid-cols-2 gap-2.5">
       {stats.map((s) => (
-        <div key={s.label} style={styles.stat}>
-          <span style={{ ...styles.dot, background: s.bg, color: s.color }}>{s.value}</span>
-          <span style={styles.label}>{s.label}</span>
+        <div key={s.label} className="bg-slate-50/70 border border-gray-100 rounded-xl p-3.5 flex flex-col items-start gap-1.5">
+          <span className={`text-xl font-bold px-2.5 py-1 rounded-lg ${s.bg} ${s.color}`}>
+            {s.value}
+          </span>
+          <span className="text-xs font-medium text-gray-500">
+            {s.label}
+          </span>
         </div>
       ))}
     </div>
   );
-};
-
-const styles = {
-  grid: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(2, 1fr)',
-    gap: '10px',
-  },
-  stat: {
-    background: '#fafbfc',
-    border: '1px solid #f0f2f5',
-    borderRadius: '10px',
-    padding: '14px',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    gap: '6px',
-  },
-  dot: {
-    fontSize: '1.3rem',
-    fontWeight: '700',
-    padding: '4px 10px',
-    borderRadius: '8px',
-  },
-  label: {
-    fontSize: '0.78rem',
-    fontWeight: '500',
-    color: '#8e8ea0',
-  },
 };
 
 export default AttendanceStats;

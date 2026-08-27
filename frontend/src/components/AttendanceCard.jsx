@@ -18,76 +18,44 @@ export const AttendanceCard = ({ record }) => {
 
   return (
     <div
-      className="card"
-      style={{
-        ...styles.card,
-        borderLeft: isPresent ? '3px solid #22c55e' : '3px solid #ef4444',
-      }}
+      className={`bg-white border border-gray-200 p-4 mb-2.5 rounded-xl shadow-xs border-l-4 ${
+        isPresent ? 'border-l-green-500' : 'border-l-red-500'
+      }`}
     >
-      <div style={styles.top}>
+      <div className="flex items-start justify-between gap-3">
         <div>
-          <h4 style={styles.title}>{record.session_title}</h4>
-          <span style={styles.date}>{formatDate(record.date)}</span>
+          <h4 className="text-sm font-semibold text-gray-900 mb-0.5 leading-snug">
+            {record.session_title}
+          </h4>
+          <span className="text-xs text-gray-400">
+            {formatDate(record.date)}
+          </span>
         </div>
-        <span className={isPresent ? 'badge-present' : 'badge-absent'}>
+        <span
+          className={`px-2.5 py-0.5 rounded-full text-[11.5px] font-semibold flex items-center gap-1 shrink-0 ${
+            isPresent
+              ? 'bg-green-50 text-green-600 border border-green-200'
+              : 'bg-red-50 text-red-600 border border-red-200'
+          }`}
+        >
           {isPresent ? '✓ Present' : '✕ Absent'}
         </span>
       </div>
 
-      <div style={styles.bottom}>
-        <span style={styles.duration}>
+      <div className="flex items-center justify-between mt-2.5 pt-2 border-t border-gray-50">
+        <span className="text-xs text-gray-400">
           {record.attended_duration} / {record.total_duration} min
         </span>
-        <span style={{
-          ...styles.pct,
-          color: isPresent ? '#22c55e' : '#ef4444',
-        }}>
+        <span
+          className={`text-xs font-bold ${
+            isPresent ? 'text-green-600' : 'text-red-600'
+          }`}
+        >
           {record.attendance_percentage}%
         </span>
       </div>
     </div>
   );
-};
-
-const styles = {
-  card: {
-    padding: '14px 16px',
-    marginBottom: '10px',
-    borderRadius: '10px',
-  },
-  top: {
-    display: 'flex',
-    alignItems: 'flex-start',
-    justifyContent: 'space-between',
-    gap: '12px',
-  },
-  title: {
-    fontSize: '0.92rem',
-    fontWeight: '600',
-    color: '#1a1a2e',
-    margin: '0 0 3px 0',
-    lineHeight: 1.3,
-  },
-  date: {
-    fontSize: '0.78rem',
-    color: '#8e8ea0',
-  },
-  bottom: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginTop: '10px',
-    paddingTop: '8px',
-    borderTop: '1px solid #f5f6fa',
-  },
-  duration: {
-    fontSize: '0.8rem',
-    color: '#8e8ea0',
-  },
-  pct: {
-    fontSize: '0.85rem',
-    fontWeight: '700',
-  },
 };
 
 export default AttendanceCard;

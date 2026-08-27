@@ -6,9 +6,9 @@ export const AttendanceList = ({ attendance }) => {
 
   if (!attendance || attendance.length === 0) {
     return (
-      <div className="card" style={styles.empty}>
-        <p style={styles.emptyTitle}>No Attendance Records</p>
-        <p style={styles.emptyText}>No sessions have been recorded for this batch yet.</p>
+      <div className="bg-white border border-gray-200 rounded-xl p-8 text-center shadow-xs">
+        <p className="text-sm font-semibold text-gray-900 mb-1">No Attendance Records</p>
+        <p className="text-xs text-gray-500 m-0">No sessions have been recorded for this batch yet.</p>
       </div>
     );
   }
@@ -29,21 +29,22 @@ export const AttendanceList = ({ attendance }) => {
   ];
 
   return (
-    <div style={styles.section}>
-      <div style={styles.header}>
-        <h3 style={styles.title}>Attendance Details</h3>
+    <div className="mb-10">
+      <div className="mb-3">
+        <h3 className="text-base font-bold text-gray-900 m-0">Attendance Details</h3>
       </div>
 
       {/* Filter tabs */}
-      <div style={styles.tabs}>
+      <div className="flex gap-1.5 mb-4">
         {filters.map((f) => (
           <button
             key={f.key}
             onClick={() => setFilter(f.key)}
-            style={{
-              ...styles.tab,
-              ...(filter === f.key ? styles.activeTab : {}),
-            }}
+            className={`px-3.5 py-1.5 rounded-full text-xs font-semibold cursor-pointer transition-colors ${
+              filter === f.key
+                ? 'bg-indigo-600 text-white'
+                : 'bg-gray-100 text-gray-500 hover:bg-gray-200'
+            }`}
           >
             {f.label}
           </button>
@@ -52,8 +53,8 @@ export const AttendanceList = ({ attendance }) => {
 
       {/* Records */}
       {filtered.length === 0 ? (
-        <div className="card" style={styles.emptyFilter}>
-          <p style={styles.emptyText}>No "{filter}" records found.</p>
+        <div className="bg-white border border-gray-200 rounded-xl p-6 text-center shadow-xs">
+          <p className="text-xs text-gray-500 m-0">No "{filter}" records found.</p>
         </div>
       ) : (
         <div>
@@ -64,61 +65,6 @@ export const AttendanceList = ({ attendance }) => {
       )}
     </div>
   );
-};
-
-const styles = {
-  section: {
-    marginBottom: '40px',
-  },
-  header: {
-    marginBottom: '12px',
-  },
-  title: {
-    fontSize: '1rem',
-    fontWeight: '700',
-    color: '#1a1a2e',
-    margin: 0,
-  },
-  tabs: {
-    display: 'flex',
-    gap: '6px',
-    marginBottom: '16px',
-  },
-  tab: {
-    background: '#f0f2f5',
-    color: '#8e8ea0',
-    border: 'none',
-    padding: '7px 14px',
-    borderRadius: '20px',
-    fontSize: '0.78rem',
-    fontWeight: '600',
-    cursor: 'pointer',
-    fontFamily: 'inherit',
-    transition: 'all 0.15s ease',
-  },
-  activeTab: {
-    background: '#4361ee',
-    color: '#ffffff',
-  },
-  empty: {
-    padding: '32px',
-    textAlign: 'center',
-  },
-  emptyFilter: {
-    padding: '24px',
-    textAlign: 'center',
-  },
-  emptyTitle: {
-    fontSize: '0.95rem',
-    fontWeight: '600',
-    color: '#1a1a2e',
-    marginBottom: '4px',
-  },
-  emptyText: {
-    fontSize: '0.82rem',
-    color: '#8e8ea0',
-    margin: 0,
-  },
 };
 
 export default AttendanceList;

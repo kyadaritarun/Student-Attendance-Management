@@ -6,48 +6,17 @@ export const ErrorState = ({
   onRetry
 }) => {
   return (
-    <div className="card" style={styles.card}>
-      <div style={styles.icon}>⚠️</div>
-      <h3 style={styles.title}>{title}</h3>
-      <p style={styles.message}>{message}</p>
+    <div className="bg-white border border-gray-200 rounded-xl p-9 text-center my-5 shadow-xs flex flex-col items-center gap-1.5">
+      <div className="text-3xl mb-1">⚠️</div>
+      <h3 className="text-sm font-semibold text-gray-900 m-0">{title}</h3>
+      <p className="text-xs text-gray-500 max-w-[320px] m-0">{message}</p>
       {onRetry && (
-        <button onClick={onRetry} className="btn-secondary" style={styles.btn}>
+        <button onClick={onRetry} className="btn-secondary mt-3 cursor-pointer">
           Try Again
         </button>
       )}
     </div>
   );
-};
-
-const styles = {
-  card: {
-    padding: '36px 20px',
-    textAlign: 'center',
-    margin: '20px 0',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    gap: '6px',
-  },
-  icon: {
-    fontSize: '2rem',
-    marginBottom: '4px',
-  },
-  title: {
-    fontSize: '1rem',
-    fontWeight: '600',
-    color: '#1a1a2e',
-    margin: 0,
-  },
-  message: {
-    fontSize: '0.85rem',
-    color: '#8e8ea0',
-    maxWidth: '320px',
-    margin: 0,
-  },
-  btn: {
-    marginTop: '12px',
-  },
 };
 
 export default ErrorState;

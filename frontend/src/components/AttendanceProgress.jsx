@@ -9,7 +9,7 @@ export const AttendanceProgress = ({ percentage }) => {
   else if (safePct < 50) strokeColor = '#ef4444';
 
   return (
-    <div style={styles.wrapper}>
+    <div className="flex flex-col items-center gap-1.5">
       <svg viewBox="0 0 36 36" className="circular-chart">
         <path
           className="circle-bg"
@@ -25,25 +25,11 @@ export const AttendanceProgress = ({ percentage }) => {
           {safePct}%
         </text>
       </svg>
-      <span style={styles.label}>Overall Attendance</span>
+      <span className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider">
+        Overall Attendance
+      </span>
     </div>
   );
-};
-
-const styles = {
-  wrapper: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    gap: '6px',
-  },
-  label: {
-    fontSize: '0.75rem',
-    fontWeight: '600',
-    color: '#8e8ea0',
-    textTransform: 'uppercase',
-    letterSpacing: '0.03em',
-  },
 };
 
 export default AttendanceProgress;
