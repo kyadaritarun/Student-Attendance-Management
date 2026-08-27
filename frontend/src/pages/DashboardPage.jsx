@@ -35,9 +35,18 @@ export const DashboardPage = () => {
       if (data.success) {
         setBatches(data.batches);
         if (data.batches.length > 0) {
-          const parsedUrlId = urlBatchId ? parseInt(urlBatchId, 10) : null;
-          const match = data.batches.find((b) => b.id === parsedUrlId);
-          setSelectedBatchId(match ? match.id : data.batches[0].id);
+          if (urlBatchId) {
+            const parsedUrlId = parseInt(urlBatchId, 10);
+            const match = data.batches.find((b) => b.id === parsedUrlId);
+            if (match) {
+              setSelectedBatchId(match.id);
+            } else {
+              setSelectedBatchId(null);
+              setError(`Batch #${urlBatchId} not found. You are not enrolled in this batch or it does not exist.`);
+            }
+          } else {
+            setSelectedBatchId(data.batches[0].id);
+          }
         }
       }
     } catch (err) {
@@ -107,9 +116,19 @@ export const DashboardPage = () => {
               <LoadingState message="Loading attendance..." />
             ) : error ? (
               <ErrorState
-                title="Could not load attendance"
+                title={selectedBatchId ? "Could not load attendance" : "Batch Not Found"}
                 message={error}
-                onRetry={() => fetchAttendance(selectedBatchId)}
+                onRetry={() => {
+                  if (selectedBatchId) {
+                    fetchAttendance(selectedBatchId);
+                  } else {
+                    setError(null);
+                    if (batches.length > 0) {
+                      handleSelectBatch(batches[0].id);
+                    }
+                  }
+                }}
+                retryLabel={selectedBatchId ? "Try Again" : "Go to My Batches"}
               />
             ) : (
               <>
