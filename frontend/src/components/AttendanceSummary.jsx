@@ -18,11 +18,11 @@ export const AttendanceSummary = ({ batch, summary }) => {
       </div>
 
       {/* Progress + Stats */}
-      <div className="flex flex-col sm:flex-row gap-6 items-center">
-        <div className="shrink-0 py-2">
-          <AttendanceProgress percentage={summary.attendance_percentage} />
+      <div className="flex flex-col sm:flex-row items-center justify-around gap-6 sm:gap-10 py-1">
+        <div className="shrink-0">
+          <AttendanceProgress summary={summary} />
         </div>
-        <div className="flex-1 w-full min-w-[200px]">
+        <div className="shrink-0">
           <AttendanceStats summary={summary} />
         </div>
       </div>

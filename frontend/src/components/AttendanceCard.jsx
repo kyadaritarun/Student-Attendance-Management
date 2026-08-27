@@ -54,6 +54,21 @@ export const AttendanceCard = ({ record }) => {
           {record.attendance_percentage}%
         </span>
       </div>
+
+      {/* Session Colored Progress Line */}
+      <div className="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden mt-2">
+        <div
+          className={`h-full rounded-full transition-all duration-500 ${
+            isPresent ? 'bg-gradient-to-r from-green-500 to-emerald-400' : 'bg-gradient-to-r from-red-500 to-rose-400'
+          }`}
+          style={{
+            width: `${Math.min(
+              100,
+              Math.max(0, record.attendance_percentage ?? (isPresent ? 100 : 0))
+            )}%`,
+          }}
+        />
+      </div>
     </div>
   );
 };
