@@ -15,7 +15,7 @@ class User(db.Model):
     profile_image = db.Column(db.String(255))
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
-    # Relationships
+  
     enrolled_batches = db.relationship('StudentBatch', backref='student', lazy=True, cascade='all, delete-orphan')
     attendance_records = db.relationship('AttendanceParticipant', backref='student', lazy=True, cascade='all, delete-orphan')
 
@@ -42,7 +42,7 @@ class Batch(db.Model):
     end_date = db.Column(db.Date)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
-    # Relationships
+    
     enrolled_students = db.relationship('StudentBatch', backref='batch', lazy=True, cascade='all, delete-orphan')
     sessions = db.relationship('AttendanceSession', backref='batch', lazy=True, cascade='all, delete-orphan')
 
@@ -83,7 +83,7 @@ class AttendanceSession(db.Model):
     total_duration_minutes = db.Column(db.Integer, default=90)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
-    # Relationships
+   
     participants = db.relationship('AttendanceParticipant', backref='session', lazy=True, cascade='all, delete-orphan')
 
 

@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 @layer utilities {
-  /* Custom Circular Progress SVG Styles */
   .circular-chart {
     display: block;
     margin: 0 auto;

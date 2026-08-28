@@ -44,7 +44,7 @@ export const LoginPage = () => {
     <div className="min-h-screen flex items-center justify-center p-6 bg-[#f5f6fa]">
       <div className="w-full max-w-[820px] bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 shadow-sm flex flex-col md:flex-row items-center gap-8">
         
-        {/* Left Side: Illustration & Branding (Hidden on mobile < 640px) */}
+       
         <div className="hidden sm:flex flex-1 flex-col items-center text-center p-3">
           <img
             src={isPasswordFocused ? "/student_logo_eyes_closed.png" : "/student_logo.png"}
@@ -61,10 +61,10 @@ export const LoginPage = () => {
           </p>
         </div>
 
-        {/* Vertical Divider */}
+      
         <div className="hidden md:block w-px h-64 bg-gray-200" />
 
-        {/* Right Side: Login Form */}
+      
         <div className="w-full md:flex-1 flex flex-col">
           <h1 className="text-2xl font-bold text-gray-900 mb-1">
             Student Login
@@ -73,7 +73,7 @@ export const LoginPage = () => {
             Sign in with your student credentials
           </p>
 
-          {/* Error Alert */}
+         
           {errorMsg && (
             <div className="bg-red-50 border border-red-200 text-red-600 px-3.5 py-2.5 rounded-lg text-sm mb-4 flex items-center gap-2">
               <span className="w-5 h-5 rounded-full bg-red-600 text-white text-xs font-bold flex items-center justify-center shrink-0">
@@ -83,7 +83,7 @@ export const LoginPage = () => {
             </div>
           )}
 
-          {/* Form */}
+         
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <label className="block text-xs font-semibold text-gray-900 mb-1.5" htmlFor="sid">

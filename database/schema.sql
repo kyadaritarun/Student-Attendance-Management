@@ -1,4 +1,4 @@
--- Student Attendance Management System Schema (PostgreSQL)
+
 
 CREATE TABLE IF NOT EXISTS users (
     id SERIAL PRIMARY KEY,
@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS attendance_participants (
     CONSTRAINT unique_session_student UNIQUE (session_id, student_id)
 );
 
--- Indexes for performance
+
 CREATE INDEX IF NOT EXISTS idx_users_student_id ON users(student_id);
 CREATE INDEX IF NOT EXISTS idx_student_batches_student_id ON student_batches(student_id);
 CREATE INDEX IF NOT EXISTS idx_student_batches_batch_id ON student_batches(batch_id);

@@ -31,7 +31,7 @@ def get_attendance_summary(current_user, batch_id):
             "message": "Batch not found"
         }), 404
 
-    # Verify authorization
+    
     if not check_student_batch_access(current_user.id, batch_id):
         return jsonify({
             "success": False,
@@ -63,7 +63,7 @@ def get_attendance_details(current_user, batch_id):
             "message": "Batch not found"
         }), 404
 
-    # Verify authorization
+  
     if not check_student_batch_access(current_user.id, batch_id):
         return jsonify({
             "success": False,

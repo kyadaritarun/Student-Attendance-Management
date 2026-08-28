@@ -1,9 +1,7 @@
 import api from './api';
 
 export const attendanceService = {
-  /**
-   * Fetch enrolled batches for logged in student
-   */
+
   async getStudentBatches() {
     try {
       const response = await api.get('/student/batches');
@@ -13,9 +11,6 @@ export const attendanceService = {
     }
   },
 
-  /**
-   * Fetch summary attendance metrics for a selected batch
-   */
   async getAttendanceSummary(batchId) {
     try {
       const response = await api.get(`/student/batches/${batchId}/attendance/summary`);
@@ -25,9 +20,7 @@ export const attendanceService = {
     }
   },
 
-  /**
-   * Fetch session-by-session attendance records for a selected batch
-   */
+
   async getAttendanceDetails(batchId) {
     try {
       const response = await api.get(`/student/batches/${batchId}/attendance`);

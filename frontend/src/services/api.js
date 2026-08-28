@@ -10,7 +10,7 @@ const api = axios.create({
   timeout: 10000,
 });
 
-// Request interceptor to attach JWT token
+
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('student_attendance_token');
@@ -22,12 +22,12 @@ api.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-// Response interceptor to handle token expiry / errors cleanly
+
 api.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response && error.response.status === 401) {
-      // Clear token if unauthorized
+     
       localStorage.removeItem('student_attendance_token');
       localStorage.removeItem('student_attendance_user');
     }

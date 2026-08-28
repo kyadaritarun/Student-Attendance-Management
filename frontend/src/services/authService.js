@@ -1,9 +1,7 @@
 import api from './api';
 
 export const authService = {
-  /**
-   * Login student with student_id and password
-   */
+
   async login(studentId, password) {
     try {
       const response = await api.post('/student/login', {
@@ -23,17 +21,13 @@ export const authService = {
     }
   },
 
-  /**
-   * Logout current student
-   */
+
   logout() {
     localStorage.removeItem('student_attendance_token');
     localStorage.removeItem('student_attendance_user');
   },
 
-  /**
-   * Get current saved user
-   */
+
   getCurrentUser() {
     const userStr = localStorage.getItem('student_attendance_user');
     if (!userStr) return null;
@@ -44,9 +38,7 @@ export const authService = {
     }
   },
 
-  /**
-   * Check if token exists
-   */
+
   isAuthenticated() {
     return !!localStorage.getItem('student_attendance_token');
   }

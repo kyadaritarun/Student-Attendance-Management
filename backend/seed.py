@@ -105,7 +105,7 @@ def seed_database():
     app = create_app()
     with app.app_context():
         print("[SEED] Resetting and initializing database (using CASCADE drop)...")
-        # Execute raw SQL cascade drop to handle PostgreSQL foreign key dependencies
+       
         try:
             db.session.execute(db.text("DROP TABLE IF EXISTS attendance_participants CASCADE;"))
             db.session.execute(db.text("DROP TABLE IF EXISTS attendance_sessions CASCADE;"))
@@ -117,7 +117,7 @@ def seed_database():
             db.session.rollback()
             print(f"[SEED Warning] Cascade table drop note: {e}")
 
-        # Drop any remaining SQLAlchemy tables and recreate
+      
         try:
             db.drop_all()
         except Exception:
@@ -125,7 +125,7 @@ def seed_database():
             
         db.create_all()
 
-        # 1. Create Batches
+      
         print("[SEED] Creating batches...")
         batches = []
         for b_info in BATCH_DATA:
@@ -141,7 +141,7 @@ def seed_database():
             batches.append(batch)
         db.session.commit()
 
-        # 2. Create Known Test Student (Rahul Sharma STU1001)
+      
         print("[SEED] Creating 150+ students...")
         default_hash = generate_password_hash("Student@123")
         
@@ -155,7 +155,7 @@ def seed_database():
         )
         db.session.add(test_student)
 
-        # Create 149 additional students (Total = 150 students)
+       
         all_students = [test_student]
         for i in range(1002, 1151):
             s_id = f"STU{i}"
@@ -176,14 +176,14 @@ def seed_database():
 
         db.session.commit()
 
-        # 3. Enroll Students into Batches
+
         print("[SEED] Enrolling students into batches...")
-        # Enroll test student into Full Stack Development (batch[0]), Data Science (batch[2]), Cloud (batch[4])
+      
         db.session.add(StudentBatch(student_id=test_student.id, batch_id=batches[0].id))
         db.session.add(StudentBatch(student_id=test_student.id, batch_id=batches[2].id))
         db.session.add(StudentBatch(student_id=test_student.id, batch_id=batches[4].id))
 
-        # Randomly enroll other students into 2 to 4 batches each
+       
         for student in all_students[1:]:
             enrolled = random.sample(batches, k=random.randint(2, 4))
             for b in enrolled:
@@ -191,7 +191,7 @@ def seed_database():
         
         db.session.commit()
 
-        # 4. Generate Attendance Sessions and Participants
+    
         print("[SEED] Generating attendance sessions & student records...")
         today = datetime.now().date()
         

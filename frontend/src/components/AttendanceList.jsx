@@ -34,7 +34,6 @@ export const AttendanceList = ({ attendance }) => {
         <h3 className="text-base font-bold text-gray-900 m-0">Attendance Details</h3>
       </div>
 
-      {/* Filter tabs */}
       <div className="flex gap-1.5 mb-4">
         {filters.map((f) => (
           <button
@@ -51,7 +50,6 @@ export const AttendanceList = ({ attendance }) => {
         ))}
       </div>
 
-      {/* Records */}
       {filtered.length === 0 ? (
         <div className="bg-white border border-gray-200 rounded-xl p-6 text-center shadow-xs">
           <p className="text-xs text-gray-500 m-0">No "{filter}" records found.</p>

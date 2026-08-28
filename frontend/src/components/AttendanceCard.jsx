@@ -18,9 +18,8 @@ export const AttendanceCard = ({ record }) => {
 
   return (
     <div
-      className={`bg-white border border-gray-200 p-4 mb-2.5 rounded-xl shadow-xs border-l-4 ${
-        isPresent ? 'border-l-green-500' : 'border-l-red-500'
-      }`}
+      className={`bg-white border border-gray-200 p-4 mb-2.5 rounded-xl shadow-xs border-l-4 ${isPresent ? 'border-l-green-500' : 'border-l-red-500'
+        }`}
     >
       <div className="flex items-start justify-between gap-3">
         <div>
@@ -32,11 +31,10 @@ export const AttendanceCard = ({ record }) => {
           </span>
         </div>
         <span
-          className={`px-2.5 py-0.5 rounded-full text-[11.5px] font-semibold flex items-center gap-1 shrink-0 ${
-            isPresent
+          className={`px-2.5 py-0.5 rounded-full text-[11.5px] font-semibold flex items-center gap-1 shrink-0 ${isPresent
               ? 'bg-green-50 text-green-600 border border-green-200'
               : 'bg-red-50 text-red-600 border border-red-200'
-          }`}
+            }`}
         >
           {isPresent ? '✓ Present' : '✕ Absent'}
         </span>
@@ -47,20 +45,17 @@ export const AttendanceCard = ({ record }) => {
           {record.attended_duration} / {record.total_duration} min
         </span>
         <span
-          className={`text-xs font-bold ${
-            isPresent ? 'text-green-600' : 'text-red-600'
-          }`}
+          className={`text-xs font-bold ${isPresent ? 'text-green-600' : 'text-red-600'
+            }`}
         >
           {record.attendance_percentage}%
         </span>
       </div>
 
-      {/* Session Colored Progress Line */}
       <div className="w-full h-1.5 bg-gray-100 rounded-full overflow-hidden mt-2">
         <div
-          className={`h-full rounded-full transition-all duration-500 ${
-            isPresent ? 'bg-gradient-to-r from-green-500 to-emerald-400' : 'bg-gradient-to-r from-red-500 to-rose-400'
-          }`}
+          className={`h-full rounded-full transition-all duration-500 ${isPresent ? 'bg-gradient-to-r from-green-500 to-emerald-400' : 'bg-gradient-to-r from-red-500 to-rose-400'
+            }`}
           style={{
             width: `${Math.min(
               100,

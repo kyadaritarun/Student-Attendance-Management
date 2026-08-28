@@ -8,7 +8,7 @@ def calculate_attendance_summary(student_id, batch_id):
       attendance_percentage = (present_sessions / total_sessions) * 100
       present_streak = consecutive Present records starting from most recent session.
     """
-    # Fetch all records for the student in this batch ordered by session_date DESC, session.id DESC
+
     records = db.session.query(AttendanceParticipant, AttendanceSession)\
         .join(AttendanceSession, AttendanceParticipant.session_id == AttendanceSession.id)\
         .filter(AttendanceSession.batch_id == batch_id)\
@@ -40,9 +40,9 @@ def calculate_attendance_summary(student_id, batch_id):
             absent_sessions += 1
             streak_broken = True
 
-    # Attendance percentage rounded to nearest integer or 1 decimal place if needed
+    
     attendance_pct = round((present_sessions / total_sessions) * 100, 1)
-    # If it's a whole number like 80.0, convert to int 80 for cleaner JSON display
+
     if attendance_pct.is_integer():
         attendance_pct = int(attendance_pct)
 

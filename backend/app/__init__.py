@@ -7,11 +7,11 @@ def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
 
-    # Initialize extensions
+   
     db.init_app(app)
     CORS(app, resources={r"/api/*": {"origins": "*"}})
 
-    # Register Blueprints
+   
     from app.routes.auth import auth_bp
     from app.routes.attendance import attendance_bp
 
@@ -25,7 +25,7 @@ def create_app(config_class=Config):
             "service": "Student Attendance Management API"
         })
 
-    # Global Error Handlers
+   
     @app.errorhandler(404)
     def not_found_error(error):
         return jsonify({

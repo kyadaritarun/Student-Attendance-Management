@@ -16,7 +16,7 @@ export const BatchList = ({ batches, selectedBatchId, onSelectBatch }) => {
   const scroll = (direction) => {
     if (sliderRef.current) {
       const cardWidth = sliderRef.current.children[0]?.offsetWidth || 300;
-      const gap = 12; // 0.75rem = 12px
+      const gap = 12; 
       const scrollAmount = (cardWidth + gap) * (direction === 'left' ? -1 : 1);
       sliderRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     }
@@ -24,7 +24,7 @@ export const BatchList = ({ batches, selectedBatchId, onSelectBatch }) => {
 
   return (
     <div className="mb-6">
-      {/* Header with Navigation Controls */}
+    
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
           <h3 className="text-base font-bold text-gray-900 m-0">My Batches</h3>
@@ -33,7 +33,7 @@ export const BatchList = ({ batches, selectedBatchId, onSelectBatch }) => {
           </span>
         </div>
 
-        {/* Slider Navigation Arrows */}
+       
         <div className="flex items-center gap-1.5">
           <button
             onClick={() => scroll('left')}
@@ -54,7 +54,7 @@ export const BatchList = ({ batches, selectedBatchId, onSelectBatch }) => {
         </div>
       </div>
 
-      {/* Horizontal Slider Track */}
+    
       <div
         ref={sliderRef}
         className="flex overflow-x-auto gap-3 pb-2 pt-0.5 scroll-smooth snap-x snap-mandatory [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
